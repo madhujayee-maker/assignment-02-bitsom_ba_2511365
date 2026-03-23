@@ -32,3 +32,12 @@ order_id, product_id, product_name
 
 This results in loss of important product information.
 
+
+
+Keeping all data in a single table may seem simpler initially, but it introduces serious issues such as redundancy, inconsistency, and update anomalies. For example, if customer details, product information, and order transactions are stored together, the same customer name and city would be repeated for every order they place. This leads to data redundancy, increasing storage usage and the risk of inconsistent data if updates are not applied uniformly.
+
+Consider a case where a product price changes. In a single flat table, the price would need to be updated in multiple rows. If one row is missed, it results in inconsistent pricing data, which can lead to incorrect reports. Similarly, deleting a record of an order could unintentionally remove important customer or product information (deletion anomaly).
+
+By normalizing the data into separate tables such as customers, products, orders, and order_items, each entity is stored only once. Relationships are maintained using foreign keys, ensuring data integrity. This structure eliminates redundancy and ensures that updates are applied consistently across the database.
+
+Additionally, normalization improves query efficiency and scalability. For example, retrieving all orders for a specific customer becomes easier and more efficient with structured relationships. Therefore, normalization is not over-engineering but a necessary step to ensure accuracy, maintainability, and long-term scalability of the database system.
